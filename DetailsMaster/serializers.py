@@ -41,12 +41,17 @@ class DDeatilsSerializer(serializers.ModelSerializer):
                     img.write(decoded_file)
                 
                 
-                FinalImagePath = os.path.join(settings.MEDIA_URL, ImagePath)
+                ImageFilePath = os.path.join(settings.MEDIA_URL, ImagePath)
                 
-                print("FinalImagePath",FinalImagePath)
+                
+                tempath = ImageFilePath.replace('\\',"/").split("deraAPI")[1]
+                FilePathFinal = "http://103.21.160.164"+tempath
+                
+                print("FinalImagePath",ImageFilePath)
                 # for i in range
                 
-                validated_data['d_familydeatils'][i]['image_data']= FinalImagePath.replace('\\',"/")
+                
+                validated_data['d_familydeatils'][i]['image_data']= FilePathFinal
                 i  = i +1
 
 
